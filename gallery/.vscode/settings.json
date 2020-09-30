@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/usr/local/Cellar/tomcat/9.0.38/libexec/lib/servlet-api.jar",
+        "/usr/local/Cellar/tomcat/9.0.38/libexec/lib/cos.jar",
+        "/usr/local/Cellar/tomcat/9.0.38/libexec/lib/ojdbc6.jar"
+    ]
+}

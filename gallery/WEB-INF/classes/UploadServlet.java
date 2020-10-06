@@ -33,7 +33,7 @@ public class UploadServlet extends HttpServlet {
             pstmt.setString(2, fileName);
             pstmt.setString(3, caption);
             pstmt.setDate(4, new java.sql.Date(date.getTime()));
-            pstmt.setBytes(5, partToBlob(filePart));
+            pstmt.setBinaryStream(5, filePart.getInputStream());
 
             success = pstmt.executeUpdate() == 1;
 
@@ -55,16 +55,5 @@ public class UploadServlet extends HttpServlet {
                 : "Picture upload failed\n" + fileName + "\n" + caption + "\n" + datePicked);
 
         request.getRequestDispatcher("upload.jsp").forward(request, response);
-    }
-
-    private byte[] partToBlob(Part filePart) throws IOException {
-        InputStream fileContent = filePart.getInputStream();
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        int c;
-        while ((c = fileContent.read()) != -1)
-            out.write(c);
-        out.flush();
-        out.close();
-        return out.toByteArray();
     }
 }
